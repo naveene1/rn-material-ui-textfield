@@ -84,6 +84,7 @@ export default class TextField extends PureComponent {
 
     label: PropTypes.string,
     title: PropTypes.string,
+    required: PropTypes.bool,
 
     characterRestriction: PropTypes.number,
 
@@ -483,7 +484,7 @@ export default class TextField extends PureComponent {
   renderLabel(props) {
     let offset = this.labelOffset()
 
-    let { label, fontSize, labelFontSize, labelTextStyle } = this.props
+    let { label, fontSize, labelFontSize, labelTextStyle ,required} = this.props
 
     return (
       <Label
@@ -493,6 +494,7 @@ export default class TextField extends PureComponent {
         offset={offset}
         label={label}
         style={labelTextStyle}
+        required={required}
       />
     )
   }
@@ -668,7 +670,7 @@ export default class TextField extends PureComponent {
     return (
       <View {...containerProps}>
         <Animated.View {...inputContainerProps}>
-          {this.renderLine(lineProps)}
+          {/* {this.renderLine(lineProps)} */}
           {this.renderAccessory('renderLeftAccessory')}
           <View style={styles.stack} pointerEvents={editable ? 'auto' : 'none'}>
             {this.renderLabel(styleProps)}

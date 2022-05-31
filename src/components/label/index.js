@@ -41,6 +41,7 @@ export default class Label extends PureComponent {
 
     style: Text.propTypes.style,
     label: PropTypes.string,
+    required:PropTypes.bool
   }
 
   render() {
@@ -58,6 +59,7 @@ export default class Label extends PureComponent {
       style,
       focusAnimation,
       labelAnimation,
+      required,
       ...props
     } = this.props
 
@@ -112,7 +114,10 @@ export default class Label extends PureComponent {
     return (
       <Animated.View style={[styles.container, containerStyle]}>
         <Animated.Text style={[styles.text, style, textStyle]} {...props}>
-          {label}
+          {label}{required ?
+          
+            <Text style={{color:'red',bottom:100}}>{' *'}</Text>
+        :null}
         </Animated.Text>
       </Animated.View>
     )
